@@ -6,7 +6,7 @@ image:
   pullPolicy: Always
 
 service:
-  type: ClusterIP
+  type: NodePort
   port: 80
   host: 34.121.81.65.nip.io
 
