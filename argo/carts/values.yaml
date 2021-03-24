@@ -6,9 +6,9 @@ image:
   pullPolicy: Always
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 80
-  host: production.nip.io
+  host: 34.121.81.65.nip.io
 
 ingress:
   enabled: false

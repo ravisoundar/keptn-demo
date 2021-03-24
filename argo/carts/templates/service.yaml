@@ -47,7 +47,7 @@ metadata:
   name: canary-{{ template "carts.name" . }}-ingress
 spec:
   rules:
-  - host: canary.{{ template "carts.name" . }}.{{ .Values.service.host }}
+  - host: canary.{{ .Values.keptn.service }}.{{ .Values.service.host }}
     http:
       paths:
       - backend:
@@ -62,7 +62,7 @@ metadata:
   name: primary-{{ template "carts.name" . }}-ingress
 spec:
   rules:
-  - host: primary.{{ template "carts.name" . }}.{{ .Values.service.host }}
+  - host: primary.{{ .Values.keptn.service }}.{{ .Values.service.host }}
     http:
       paths:
       - backend:
