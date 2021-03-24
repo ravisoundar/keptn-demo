@@ -23,6 +23,6 @@ ingress:
   #      - chart-example.local
 
 keptn:
-  project: sockshop
+  project: prod-sockshop
   stage: production
   service: carts
