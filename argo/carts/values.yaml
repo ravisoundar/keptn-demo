@@ -8,6 +8,7 @@ image:
 service:
   type: LoadBalancer
   port: 80
+  host: production.nip.io
 
 ingress:
   enabled: false

@@ -38,4 +38,33 @@ spec:
   selector:
     app: {{ template "carts.name" . }}
     release: {{ .Release.Name }}
-  
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: canary-{{ template "carts.name" . }}-ingress
+spec:
+  rules:
+  - host: canary.{{ template "carts.name" . }}.{{ .Values.service.host }}
+    http:
+      paths:
+      - backend:
+          serviceName: {{ template "carts.name" . }}-canary
+          servicePort: {{ .Values.service.port }}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: primary-{{ template "carts.name" . }}-ingress
+spec:
+  rules:
+  - host: primary.{{ template "carts.name" . }}.{{ .Values.service.host }}
+    http:
+      paths:
+      - backend:
+          serviceName: {{ template "carts.name" . }}-primary
+          servicePort: {{ .Values.service.port }}
